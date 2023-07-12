@@ -69,7 +69,7 @@ class _ViewProductPageState extends State<ViewProductPage> {
 
     return Scaffold(
         key: _scaffoldKey,
-        backgroundColor: yellow,
+        backgroundColor: black,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0.0,

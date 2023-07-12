@@ -56,7 +56,7 @@ class _RatingPageState extends State<RatingPage> {
                             height: 92,
                             width: 92,
                             decoration: BoxDecoration(
-                                color: yellow,
+                                color: black,
                                 shape: BoxShape.circle,
                                 boxShadow: shadow,
                                 border: Border.all(

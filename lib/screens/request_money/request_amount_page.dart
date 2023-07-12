@@ -95,7 +95,7 @@ class RequestAmountPage extends StatelessWidget {
                       height: MediaQuery.of(context).size.height / 2.3,
                       padding: const EdgeInsets.all(16.0),
                       width: MediaQuery.of(context).size.width,
-                      color: yellow,
+                      color: black,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[

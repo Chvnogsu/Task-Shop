@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-const Color yellow = Color(0xffFDC054);
-const Color mediumYellow = Color(0xffFDB846);
-const Color darkYellow = Color(0xffE99E22);
-const Color transparentYellow = Color.fromRGBO(253, 184, 70, 0.7);
+const Color black = Color(0xffFDC054);
+const Color black45 = Color(0x73000000);
+const Color darkBlack = Color(0xFF000000);
+const Color transparent = Color(0x00000000);
 const Color darkGrey = Color(0xff202020);
 
 const LinearGradient mainButton = LinearGradient(colors: [

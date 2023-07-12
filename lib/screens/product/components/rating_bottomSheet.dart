@@ -28,7 +28,7 @@ class _RatingBottomSheetState extends State<RatingBottomSheet> {
                 height: 92,
                 width: 92,
                 decoration: BoxDecoration(
-                    color: yellow,
+                    color: black,
                     shape: BoxShape.circle,
                     boxShadow: shadow,
                     border: Border.all(width: 8.0, color: Colors.white)),

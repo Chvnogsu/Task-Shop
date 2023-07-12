@@ -111,7 +111,7 @@ class _TrackingPageState extends State<TrackingPage> {
                       ),
                       child: Theme(
                         data: ThemeData(
-                            primaryColor: yellow, fontFamily: 'Montserrat'),
+                            primaryColor: black, fontFamily: 'Montserrat'),
                         child: Stepper(
                           steps: [
                             ...locations

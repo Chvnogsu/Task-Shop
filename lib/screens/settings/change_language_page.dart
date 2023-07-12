@@ -70,7 +70,7 @@ class _ChangeCountryPageState extends State<ChangeLanguagePage> {
                             trailing: l == currentLanguage
                                 ? Icon(
                                     Icons.check_circle,
-                                    color: yellow,
+                                    color: black,
                                     size: 16,
                                   )
                                 : SizedBox(),

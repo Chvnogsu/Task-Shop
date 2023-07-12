@@ -98,7 +98,7 @@ class AddAddressPage extends StatelessWidget {
                               ))),
                       Card(
                           margin: EdgeInsets.symmetric(vertical: 8.0),
-                          color: yellow,
+                          color: black,
                           elevation: 3,
                           child: SizedBox(
                               height: 80,
@@ -129,7 +129,7 @@ class AddAddressPage extends StatelessWidget {
                               ))),
                       Card(
                           margin: EdgeInsets.symmetric(vertical: 8.0),
-                          color: yellow,
+                          color: black,
                           elevation: 3,
                           child: SizedBox(
                               height: 80,

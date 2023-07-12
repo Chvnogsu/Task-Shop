@@ -21,7 +21,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         image: DecorationImage(
             image: AssetImage('assets/background.jpg'), fit: BoxFit.cover),
       ),
-      foregroundDecoration: BoxDecoration(color: transparentYellow),
+      foregroundDecoration: BoxDecoration(color: transparent),
     );
 
     Widget title = Text(
@@ -155,7 +155,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             image: DecorationImage(
                 image: AssetImage('assets/background.jpg'), fit: BoxFit.cover)),
         child: Container(
-          decoration: BoxDecoration(color: transparentYellow),
+          decoration: BoxDecoration(color: transparent),
           child: Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.transparent,

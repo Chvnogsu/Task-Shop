@@ -21,7 +21,7 @@ class ProfilePage extends StatelessWidget {
               children: <Widget>[
                 CircleAvatar(
                   maxRadius: 48,
-                  backgroundImage: AssetImage('assets/background.jpg'),
+                  backgroundImage: AssetImage('assets/avatar.jpg'),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -41,7 +41,7 @@ class ProfilePage extends StatelessWidget {
                       color: Colors.white,
                       boxShadow: [
                         BoxShadow(
-                            color: transparentYellow,
+                            color: transparent,
                             blurRadius: 4,
                             spreadRadius: 1,
                             offset: Offset(0, 1))
@@ -115,7 +115,7 @@ class ProfilePage extends StatelessWidget {
                   title: Text('Settings'),
                   subtitle: Text('Privacy and logout'),
                   leading: Image.asset('assets/icons/settings_icon.png', fit: BoxFit.scaleDown, width: 30, height: 30,),
-                  trailing: Icon(Icons.chevron_right, color: yellow),
+                  trailing: Icon(Icons.chevron_right, color: black),
                   onTap: () => Navigator.of(context).push(
                       MaterialPageRoute(builder: (_) => SettingsPage())),
                 ),
@@ -126,7 +126,7 @@ class ProfilePage extends StatelessWidget {
                   leading: Image.asset('assets/icons/support.png'),
                   trailing: Icon(
                     Icons.chevron_right,
-                    color: yellow,
+                    color: black,
                   ),
                 ),
                 Divider(),
@@ -134,7 +134,7 @@ class ProfilePage extends StatelessWidget {
                   title: Text('FAQ'),
                   subtitle: Text('Questions and Answer'),
                   leading: Image.asset('assets/icons/faq.png'),
-                  trailing: Icon(Icons.chevron_right, color: yellow),
+                  trailing: Icon(Icons.chevron_right, color: black),
                   onTap: () => Navigator.of(context).push(
                       MaterialPageRoute(builder: (_) => FaqPage())),
                 ),

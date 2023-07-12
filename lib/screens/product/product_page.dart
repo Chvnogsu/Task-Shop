@@ -56,7 +56,7 @@ class _ProductPageState extends State<ProductPage> {
     );
 
     return Scaffold(
-      backgroundColor: yellow,
+      backgroundColor: black,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0.0,

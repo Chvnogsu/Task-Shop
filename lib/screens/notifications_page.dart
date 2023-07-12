@@ -43,7 +43,7 @@ class NotificationsPage extends StatelessWidget {
                             children: <Widget>[
                               CircleAvatar(
                                 backgroundImage: AssetImage(
-                                  'assets/background.jpg',
+                                  'assets/avatar.jpg',
                                 ),
                                 maxRadius: 24,
                               ),
@@ -59,7 +59,7 @@ class NotificationsPage extends StatelessWidget {
                                         ),
                                         children: [
                                           TextSpan(
-                                              text: 'Sai Sankar Ram',
+                                              text: 'Juan Arce',
                                               style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                               )),
@@ -131,7 +131,7 @@ class NotificationsPage extends StatelessWidget {
                             children: <Widget>[
                               CircleAvatar(
                                 backgroundImage: AssetImage(
-                                  'assets/background.jpg',
+                                  'assets/avatar.jpg',
                                 ),
                                 maxRadius: 24,
                               ),
@@ -147,15 +147,15 @@ class NotificationsPage extends StatelessWidget {
                                         ),
                                         children: [
                                           TextSpan(
-                                              text: 'Sai Sankar Ram',
+                                              text: 'Naomi King',
                                               style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                               )),
                                           TextSpan(
-                                            text: ' Send You ',
+                                            text: ' Sent You ',
                                           ),
                                           TextSpan(
-                                            text: '\$45.25',
+                                            text: '\$135.00',
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                             ),
@@ -269,7 +269,7 @@ class NotificationsPage extends StatelessWidget {
                             child: Container(
                                 padding: const EdgeInsets.all(14.0),
                                 decoration: BoxDecoration(
-                                    color: yellow,
+                                    color: black,
                                     borderRadius: BorderRadius.only(
                                         bottomRight: Radius.circular(5.0),
                                         bottomLeft: Radius.circular(5.0))),
@@ -348,7 +348,7 @@ class NotificationsPage extends StatelessWidget {
                             child: Container(
                                 padding: const EdgeInsets.all(14.0),
                                 decoration: BoxDecoration(
-                                    color: yellow,
+                                    color: black,
                                     borderRadius: BorderRadius.only(
                                         bottomRight: Radius.circular(5.0),
                                         bottomLeft: Radius.circular(5.0))),
