@@ -43,7 +43,7 @@ class ProductDisplay extends StatelessWidget {
                             fontFamily: "Montserrat",
                             fontSize: 36.0)),
                     TextSpan(
-                        text: '.58',
+                        text: '',
                         style: const TextStyle(
                             color: const Color(0xFFFFFFFF),
                             fontWeight: FontWeight.w400,

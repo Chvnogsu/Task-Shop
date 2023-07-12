@@ -7,6 +7,35 @@ import 'package:task_shop/screens/wallet/wallet_page.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
+  void showPhoneNumberDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Help & Support'),
+          content: GestureDetector(
+            onTap: () {},
+            child: Text(
+              '1800-123-4567',
+              style: TextStyle(
+                color: Colors.blue,
+                decoration: TextDecoration.underline,
+              ),
+            ),
+          ),
+          actions: [
+            TextButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +85,7 @@ class ProfilePage extends StatelessWidget {
                           children: <Widget>[
                             IconButton(
                               icon: Image.asset('assets/icons/wallet.png'),
-                              onPressed:()=> Navigator.of(context).push(
+                              onPressed: () => Navigator.of(context).push(
                                   MaterialPageRoute(
                                       builder: (_) => WalletPage())),
                             ),
@@ -72,7 +101,8 @@ class ProfilePage extends StatelessWidget {
                             IconButton(
                               icon: Image.asset('assets/icons/truck.png'),
                               onPressed: () => Navigator.of(context).push(
-                                MaterialPageRoute(builder: (_) => TrackingPage())),
+                                  MaterialPageRoute(
+                                      builder: (_) => TrackingPage())),
                             ),
                             Text(
                               'Shipped',
@@ -85,7 +115,7 @@ class ProfilePage extends StatelessWidget {
                           children: <Widget>[
                             IconButton(
                               icon: Image.asset('assets/icons/card.png'),
-                              onPressed:()=> Navigator.of(context).push(
+                              onPressed: () => Navigator.of(context).push(
                                   MaterialPageRoute(
                                       builder: (_) => PaymentPage())),
                             ),
@@ -99,7 +129,8 @@ class ProfilePage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             IconButton(
-                              icon: Image.asset('assets/icons/contact_us.png'), onPressed: () {},
+                              icon: Image.asset('assets/icons/contact_us.png'),
+                              onPressed: () => showPhoneNumberDialog(context),
                             ),
                             Text(
                               'Support',
@@ -114,7 +145,12 @@ class ProfilePage extends StatelessWidget {
                 ListTile(
                   title: Text('Settings'),
                   subtitle: Text('Privacy and logout'),
-                  leading: Image.asset('assets/icons/settings_icon.png', fit: BoxFit.scaleDown, width: 30, height: 30,),
+                  leading: Image.asset(
+                    'assets/icons/settings_icon.png',
+                    fit: BoxFit.scaleDown,
+                    width: 30,
+                    height: 30,
+                  ),
                   trailing: Icon(Icons.chevron_right, color: black),
                   onTap: () => Navigator.of(context).push(
                       MaterialPageRoute(builder: (_) => SettingsPage())),
@@ -128,6 +164,7 @@ class ProfilePage extends StatelessWidget {
                     Icons.chevron_right,
                     color: black,
                   ),
+                  onTap: () => showPhoneNumberDialog(context),
                 ),
                 Divider(),
                 ListTile(
