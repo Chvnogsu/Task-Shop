@@ -36,7 +36,7 @@ class PromoItem extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  'Boat Rockerz 400 On-Ear Bluetooth Headphones',
+                                  'Rick Owens DRKSHDW Jumbo Lace Low',
                                   textAlign: TextAlign.right,
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
@@ -53,7 +53,7 @@ class PromoItem extends StatelessWidget {
                                     children: <Widget>[
                                       ColorOption(Colors.red),
                                       Text(
-                                        '\$58.24',
+                                        '\$702.33',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                             color: darkGrey,
@@ -131,9 +131,9 @@ class PromoItem extends StatelessWidget {
             top: 5,
             child: ShopProductDisplay(
               Product(
-                  'assets/headphones.png',
-                  'Boat roackerz 400 On-Ear Bluetooth Headphones',
-                  'description',
+                  'assets/headphone_9.png',
+                  'Rick Owens',
+                  'Rick Owens DRKSHDW Jumbo Lace Low',
                   45.3),
               onPressed: () {},
             ),

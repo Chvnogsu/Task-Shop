@@ -68,51 +68,53 @@ class _ViewProductPageState extends State<ViewProductPage> {
     );
 
     return Scaffold(
-        key: _scaffoldKey,
-        backgroundColor: black,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0.0,
-          iconTheme: IconThemeData(color: darkGrey),
-          actions: <Widget>[
-            IconButton(
-              icon: new SvgPicture.asset(
-                'assets/icons/search_icon.svg',
-                fit: BoxFit.scaleDown,
-              ),
-              onPressed: () => Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (_) => SearchPage())),
-            )
-          ],
-          title: Text(
-            'Headphones',
-            style: const TextStyle(
-                color: darkGrey,
-                fontWeight: FontWeight.w500,
-                fontFamily: "Montserrat",
-                fontSize: 18.0),
+      key: _scaffoldKey,
+      backgroundColor: Colors.grey, // Set the background color to grey
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        iconTheme: IconThemeData(color: darkGrey),
+        actions: <Widget>[
+          IconButton(
+            icon: new SvgPicture.asset(
+              'assets/icons/search_icon.svg',
+              fit: BoxFit.scaleDown,
+            ),
+            onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => SearchPage())),
+          )
+        ],
+        title: Text(
+          'Shop',
+          style: const TextStyle(
+            color: darkGrey,
+            fontWeight: FontWeight.w500,
+            fontFamily: "Montserrat",
+            fontSize: 18.0,
           ),
         ),
-        body: SingleChildScrollView(
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            child: Column(
-              children: <Widget>[
-                ProductOption(
-                  _scaffoldKey,
-                  product: widget.product,
-                ),
-                description,
-                Padding(
-                  padding: const EdgeInsets.all(24.0),
-                  child: Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            children: <Widget>[
+              ProductOption(
+                _scaffoldKey,
+                product: widget.product,
+              ),
+              description,
+              Padding(
+                padding: const EdgeInsets.all(24.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
                     Flexible(
                       child: ColorList([
                         Colors.red,
                         Colors.blue,
                         Colors.purple,
                         Colors.green,
-                        Colors.yellow
+                        Colors.yellow,
                       ]),
                     ),
                     RawMaterialButton(
@@ -122,24 +124,25 @@ class _ViewProductPageState extends State<ViewProductPage> {
                           builder: (context) {
                             return RatingBottomSheet();
                           },
-                          //elevation: 0,
-                          //backgroundColor: Colors.transparent
                         );
                       },
-                      constraints:
-                          const BoxConstraints(minWidth: 45, minHeight: 45),
-                      child: Icon(Icons.favorite,
-                          color: Color.fromRGBO(255, 137, 147, 1)),
+                      constraints: const BoxConstraints(minWidth: 45, minHeight: 45),
+                      child: Icon(
+                        Icons.favorite,
+                        color: Color.fromRGBO(255, 137, 147, 1),
+                      ),
                       elevation: 0.0,
                       shape: CircleBorder(),
                       fillColor: Color.fromRGBO(255, 255, 255, 0.4),
                     ),
-                  ]),
+                  ],
                 ),
-                MoreProducts()
-              ],
-            ),
+              ),
+              MoreProducts(),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

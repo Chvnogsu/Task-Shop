@@ -8,10 +8,8 @@ import 'shop_bottomSheet.dart';
 class ProductOption extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
   final Product product;
-  const ProductOption(
-    this.scaffoldKey, {
-    required this.product,
-  });
+
+  const ProductOption(this.scaffoldKey, {required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -38,26 +36,31 @@ class ProductOption extends StatelessWidget {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                    child: Text(product.name,
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            shadows: shadow)),
+                    child: Text(
+                      product.name,
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        shadows: shadow,
+                      ),
+                    ),
                   ),
                   InkWell(
                     onTap: () async {
                       Navigator.of(context).push(
-                          MaterialPageRoute(builder: (_) => CheckOutPage()));
+                        MaterialPageRoute(builder: (_) => CheckOutPage()),
+                      );
                     },
                     child: Container(
                       width: MediaQuery.of(context).size.width / 2.5,
                       decoration: BoxDecoration(
-                          color: Colors.red,
-                          gradient: mainButton,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10.0),
-                              bottomLeft: Radius.circular(10.0))),
+                        color: Colors.black, // Set the button color to black
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10.0),
+                          bottomLeft: Radius.circular(10.0),
+                        ),
+                      ),
                       padding: EdgeInsets.symmetric(vertical: 16.0),
                       child: Center(
                         child: Text(
@@ -79,11 +82,12 @@ class ProductOption extends StatelessWidget {
                     child: Container(
                       width: MediaQuery.of(context).size.width / 2.5,
                       decoration: BoxDecoration(
-                          color: Colors.red,
-                          gradient: mainButton,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10.0),
-                              bottomLeft: Radius.circular(10.0))),
+                        color: Colors.black, // Set the button color to black
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10.0),
+                          bottomLeft: Radius.circular(10.0),
+                        ),
+                      ),
                       padding: EdgeInsets.symmetric(vertical: 16.0),
                       child: Center(
                         child: Text(
@@ -95,11 +99,11 @@ class ProductOption extends StatelessWidget {
                         ),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );

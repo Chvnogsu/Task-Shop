@@ -6,16 +6,16 @@ import 'recommended_list.dart';
 class TabView extends StatelessWidget {
   List<Category> categories = [
     Category(
-      Color(0xffFCE183),
+      Colors.grey, // Change the color here to grey
       Color(0xffF68D7F),
-      'Gadgets',
-      'assets/jeans_5.png',
+      'Women Clothes',
+      'assets/shoeman_7.png',
     ),
     Category(
-      Color(0xffF749A2),
-      Color(0xffFF7375),
-      'Clothes',
-      'assets/jeans_5.png',
+      Colors.grey, // Change the color here to grey
+      Colors.grey, // Change the color here to grey
+      'Men Clothes',
+      'assets/headphone_9.png',
     ),
     Category(
       Color(0xff00E9DA),
@@ -53,54 +53,47 @@ class TabView extends StatelessWidget {
   Widget build(BuildContext context) {
     print(MediaQuery.of(context).size.height / 9);
     return TabBarView(
-        physics: NeverScrollableScrollPhysics(),
-        controller: tabController,
-        children: <Widget>[
-          Container(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Container(
-                    margin: EdgeInsets.all(8.0),
-                    height: MediaQuery.of(context).size.height / 9,
-                    width: MediaQuery.of(context).size.width,
-                    child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: categories.length,
-                        itemBuilder: (_, index) => CategoryCard(
-                              category: categories[index],
-                            ))),
-                SizedBox(
-                  height: 16.0,
+      physics: NeverScrollableScrollPhysics(),
+      controller: tabController,
+      children: <Widget>[
+        Container(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.all(8.0),
+                height: MediaQuery.of(context).size.height / 9,
+                width: MediaQuery.of(context).size.width,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: categories.length,
+                  itemBuilder: (_, index) => CategoryCard(
+                    category: categories[index],
+                  ),
                 ),
-                Flexible(child: RecommendedList()),
-              ],
-            ),
+              ),
+              SizedBox(height: 16.0),
+              Flexible(child: RecommendedList()),
+            ],
           ),
-          Column(children: <Widget>[
-            SizedBox(
-              height: 16.0,
-            ),
-            Flexible(child: RecommendedList())
-          ]),
-          Column(children: <Widget>[
-            SizedBox(
-              height: 16.0,
-            ),
-            Flexible(child: RecommendedList())
-          ]),
-          Column(children: <Widget>[
-            SizedBox(
-              height: 16.0,
-            ),
-            Flexible(child: RecommendedList())
-          ]),
-          Column(children: <Widget>[
-            SizedBox(
-              height: 16.0,
-            ),
-            Flexible(child: RecommendedList())
-          ]),
-        ]);
+        ),
+        Column(children: <Widget>[
+          SizedBox(height: 16.0),
+          Flexible(child: RecommendedList())
+        ]),
+        Column(children: <Widget>[
+          SizedBox(height: 16.0),
+          Flexible(child: RecommendedList())
+        ]),
+        Column(children: <Widget>[
+          SizedBox(height: 16.0),
+          Flexible(child: RecommendedList())
+        ]),
+        Column(children: <Widget>[
+          SizedBox(height: 16.0),
+          Flexible(child: RecommendedList())
+        ]),
+      ],
+    );
   }
 }

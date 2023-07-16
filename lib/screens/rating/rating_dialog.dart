@@ -61,7 +61,7 @@ class RatingDialog extends StatelessWidget {
                         text: 'You rated ',
                       ),
                       TextSpan(
-                          text: 'Boat Rockerz 350 On-Ear Bluetooth Headphones',
+                          text: 'MSCHF Big Red Boot',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.grey[600]))

@@ -34,7 +34,7 @@ class UnpaidPage extends StatelessWidget {
           child: Text(
             "Pay Now",
             style: const TextStyle(
-              color: const Color(0xfffefefe),
+              color: Colors.white, // Updated to white color
               fontWeight: FontWeight.w600,
               fontStyle: FontStyle.normal,
               fontSize: 20.0,
@@ -84,20 +84,20 @@ class UnpaidPage extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     ListTile(
-                      title: Text('Boat Rockerz 350 On-Ear ..'),
-                      trailing: Text('74.68'),
+                      title: Text('Rick Owens DRKSHDW Jumbo Lace Low'),
+                      trailing: Text('702.33'),
                     ),
                     ListTile(
                       title: Text('Tax'),
-                      trailing: Text('1.25'),
+                      trailing: Text('42.13'),
                     ),
                     ListTile(
                       title: Text('Subtotal'),
-                      trailing: Text('76.93'),
+                      trailing: Text('744.46'),
                     ),
                     ListTile(
                       title: Text('Promocode'),
-                      trailing: Text('-10.93'),
+                      trailing: Text('0.00'),
                     ),
                     Divider(),
                     ListTile(
@@ -109,7 +109,7 @@ class UnpaidPage extends StatelessWidget {
                         ),
                       ),
                       trailing: Text(
-                        '\$ 66.93',
+                        '\$ 744.46',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,

@@ -10,8 +10,10 @@ class WelcomeBackPage extends StatefulWidget {
 
 class _WelcomeBackPageState extends State<WelcomeBackPage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  TextEditingController email = TextEditingController(text: 'Email');
-  TextEditingController password = TextEditingController(text: 'Password');
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+
+  bool isEmailSelected = false;
 
   Future<void> signInWithEmailAndPassword() async {
     try {
@@ -53,6 +55,80 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
   void navigateToRegisterPage() {
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (_) => RegisterPage()));
+  }
+
+  void showResetPasswordDialog() {
+    String email = '';
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Forgot Password'),
+          content: TextField(
+            onChanged: (value) {
+              email = value;
+            },
+            decoration: InputDecoration(hintText: 'Enter your email'),
+          ),
+          actions: [
+            TextButton(
+              child: Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text('Submit'),
+              onPressed: () {
+                resetPassword(email);
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void resetPassword(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Password Reset'),
+            content: Text('A password reset link has been sent to your email.'),
+            actions: [
+              TextButton(
+                child: Text('OK'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    } catch (e) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text('Failed to send password reset email. Please try again.'),
+            actions: [
+              TextButton(
+                child: Text('OK'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 
   @override
@@ -108,9 +184,9 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color.fromRGBO(236, 60, 3, 1),
-                Color.fromRGBO(234, 60, 3, 1),
-                Color.fromRGBO(216, 78, 16, 1),
+                Colors.grey[500]!, // Change the gradient color here
+                Colors.grey[500]!, // Change the gradient color here
+                Colors.grey[700]!, // Change the gradient color here
               ],
               begin: FractionalOffset.topCenter,
               end: FractionalOffset.bottomCenter,
@@ -150,9 +226,9 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color.fromRGBO(236, 60, 3, 1),
-                Color.fromRGBO(234, 60, 3, 1),
-                Color.fromRGBO(216, 78, 16, 1),
+                Colors.grey[500]!, // Change the gradient color here
+                Colors.grey[500]!, // Change the gradient color here
+                Colors.grey[700]!, // Change the gradient color here
               ],
               begin: FractionalOffset.topCenter,
               end: FractionalOffset.bottomCenter,
@@ -193,6 +269,14 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
                   child: TextField(
                     controller: email,
                     style: TextStyle(fontSize: 16.0),
+                    onTap: () {
+                      setState(() {
+                        isEmailSelected = true;
+                      });
+                    },
+                    decoration: InputDecoration(
+                      hintText: isEmailSelected ? '' : 'Email',
+                    ),
                   ),
                 ),
                 Padding(
@@ -201,6 +285,9 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
                     controller: password,
                     style: TextStyle(fontSize: 16.0),
                     obscureText: true,
+                    decoration: InputDecoration(
+                      hintText: 'Password',
+                    ),
                   ),
                 ),
               ],
@@ -234,12 +321,15 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
               fontSize: 14.0,
             ),
           ),
-          Text(
-            'Forgot your password?',
-            style: TextStyle(
-              fontStyle: FontStyle.italic,
-              color: Color.fromRGBO(255, 255, 255, 0.5),
-              fontSize: 14.0,
+          InkWell(
+            onTap: showResetPasswordDialog,
+            child: Text(
+              'Forgot your password?',
+              style: TextStyle(
+                fontStyle: FontStyle.italic,
+                color: Color.fromRGBO(255, 255, 255, 0.5),
+                fontSize: 14.0,
+              ),
             ),
           ),
         ],

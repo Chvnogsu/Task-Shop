@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'forgot_password_page.dart';
+import 'package:task_shop/screens/intro_page.dart'; // Import intro_page.dart
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -11,9 +12,11 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  TextEditingController email = TextEditingController(text: 'email');
-  TextEditingController password = TextEditingController(text: 'password');
-  TextEditingController cmfPassword = TextEditingController(text: 'password');
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+  TextEditingController cmfPassword = TextEditingController();
+
+  bool isEmailSelected = false;
 
   Future<void> registerWithEmailAndPassword() async {
     try {
@@ -25,8 +28,10 @@ class _RegisterPageState extends State<RegisterPage> {
       User? user = userCredential.user;
       if (user != null) {
         // User registration successful, navigate to the next screen
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (_) => ForgotPasswordPage()));
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => IntroPage()),
+        );
       }
     } catch (e) {
       showDialog(
@@ -54,27 +59,29 @@ class _RegisterPageState extends State<RegisterPage> {
     Widget title = Text(
       'Glad To Meet You',
       style: TextStyle(
-          color: Colors.white,
-          fontSize: 34.0,
-          fontWeight: FontWeight.bold,
-          shadows: [
-            BoxShadow(
-              color: Color.fromRGBO(0, 0, 0, 0.15),
-              offset: Offset(0, 5),
-              blurRadius: 10.0,
-            )
-          ]),
+        color: Colors.white,
+        fontSize: 34.0,
+        fontWeight: FontWeight.bold,
+        shadows: [
+          BoxShadow(
+            color: Color.fromRGBO(0, 0, 0, 0.15),
+            offset: Offset(0, 5),
+            blurRadius: 10.0,
+          )
+        ],
+      ),
     );
 
     Widget subTitle = Padding(
-        padding: const EdgeInsets.only(right: 56.0),
-        child: Text(
-          'Create your new account for future uses.',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 16.0,
-          ),
-        ));
+      padding: const EdgeInsets.only(right: 56.0),
+      child: Text(
+        'Create your new account for future uses.',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 16.0,
+        ),
+      ),
+    );
 
     Widget registerButton = Positioned(
       left: MediaQuery.of(context).size.width / 4,
@@ -87,22 +94,27 @@ class _RegisterPageState extends State<RegisterPage> {
           width: MediaQuery.of(context).size.width / 2,
           height: 80,
           child: Center(
-              child: new Text("Register",
-                  style: const TextStyle(
-                      color: const Color(0xfffefefe),
-                      fontWeight: FontWeight.w600,
-                      fontStyle: FontStyle.normal,
-                      fontSize: 20.0))),
+            child: Text(
+              'Register',
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+                fontStyle: FontStyle.normal,
+                fontSize: 20.0,
+              ),
+            ),
+          ),
           decoration: BoxDecoration(
-              gradient: mainButton,
-              boxShadow: [
-                BoxShadow(
-                  color: Color.fromRGBO(0, 0, 0, 0.16),
-                  offset: Offset(0, 5),
-                  blurRadius: 10.0,
-                )
-              ],
-              borderRadius: BorderRadius.circular(9.0)),
+            color: Colors.grey[500], // Set the background color to grey
+            boxShadow: [
+              BoxShadow(
+                color: Color.fromRGBO(0, 0, 0, 0.16),
+                offset: Offset(0, 5),
+                blurRadius: 10.0,
+              ),
+            ],
+            borderRadius: BorderRadius.circular(9.0),
+          ),
         ),
       ),
     );
@@ -116,10 +128,12 @@ class _RegisterPageState extends State<RegisterPage> {
             width: MediaQuery.of(context).size.width,
             padding: const EdgeInsets.only(left: 32.0, right: 12.0),
             decoration: BoxDecoration(
-                color: Color.fromRGBO(255, 255, 255, 0.8),
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    bottomLeft: Radius.circular(10))),
+              color: Color.fromRGBO(255, 255, 255, 0.8),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10),
+                bottomLeft: Radius.circular(10),
+              ),
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
@@ -128,6 +142,14 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: TextField(
                     controller: email,
                     style: TextStyle(fontSize: 16.0),
+                    onTap: () {
+                      setState(() {
+                        isEmailSelected = true;
+                      });
+                    },
+                    decoration: InputDecoration(
+                      hintText: isEmailSelected ? '' : 'Email',
+                    ),
                   ),
                 ),
                 Padding(
@@ -136,6 +158,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     controller: password,
                     style: TextStyle(fontSize: 16.0),
                     obscureText: true,
+                    decoration: InputDecoration(
+                      hintText: 'Password',
+                    ),
                   ),
                 ),
                 Padding(
@@ -144,6 +169,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     controller: cmfPassword,
                     style: TextStyle(fontSize: 16.0),
                     obscureText: true,
+                    decoration: InputDecoration(
+                      hintText: 'Confirm Password',
+                    ),
                   ),
                 ),
               ],
@@ -159,7 +187,10 @@ class _RegisterPageState extends State<RegisterPage> {
         Text(
           'You can sign in with',
           style: TextStyle(
-              fontSize: 12.0, fontStyle: FontStyle.italic, color: Colors.white),
+            fontSize: 12.0,
+            fontStyle: FontStyle.italic,
+            color: Colors.white,
+          ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -170,11 +201,12 @@ class _RegisterPageState extends State<RegisterPage> {
               color: Colors.white,
             ),
             IconButton(
-                icon: Icon(Icons.find_replace),
-                onPressed: () {},
-                color: Colors.white),
+              icon: Icon(Icons.find_replace),
+              onPressed: () {},
+              color: Colors.white,
+            ),
           ],
-        )
+        ),
       ],
     );
 
@@ -210,7 +242,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 Padding(
                   padding: EdgeInsets.only(bottom: 20),
                   child: socialRegister,
-                )
+                ),
               ],
             ),
           ),
@@ -224,7 +256,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 Navigator.pop(context);
               },
             ),
-          )
+          ),
         ],
       ),
     );

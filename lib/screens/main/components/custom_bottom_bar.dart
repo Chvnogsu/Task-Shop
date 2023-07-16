@@ -14,8 +14,8 @@ class CustomBottomBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           IconButton(
-            icon: SvgPicture.asset(
-              'assets/icons/home_icon.svg',
+            icon: Image.asset(
+              'assets/icons/home_icon.png',
               fit: BoxFit.fitWidth,
             ),
             onPressed: () {
@@ -29,7 +29,7 @@ class CustomBottomBar extends StatelessWidget {
             },
           ),
           IconButton(
-            icon: SvgPicture.asset('assets/icons/cart_icon.svg'),
+            icon: Image.asset('assets/icons/cart_icon.png'),
             onPressed: () {
               controller.animateTo(2);
             },

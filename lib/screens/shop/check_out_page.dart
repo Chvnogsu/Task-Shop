@@ -17,12 +17,9 @@ class _CheckOutPageState extends State<CheckOutPage> {
   SwiperController swiperController = SwiperController();
 
   List<Product> products = [
-    Product('assets/headphones.png',
-        'Boat roackerz 400 On-Ear Bluetooth Headphones', 'description', 45.3),
-    Product('assets/headphones_2.png',
-        'Boat roackerz 100 On-Ear Bluetooth Headphones', 'description', 22.3),
-    Product('assets/headphones_3.png',
-        'Boat roackerz 300 On-Ear Bluetooth Headphones', 'description', 58.3)
+    Product('assets/womanshoe_3.png', 'Balenciaga', 'BB Phantom(38)', 599.99),
+    Product('assets/bag_10.png', 'Cactus Jack', 'Cacti(L)', 149.99),
+    Product('assets/jeans_3.png', 'EE', 'EE Shorts', 219.99),
   ];
 
   @override
@@ -53,6 +50,9 @@ class _CheckOutPageState extends State<CheckOutPage> {
         ),
       ),
     );
+
+    // Calculate the total price of the products
+    double totalPrice = products.fold(0, (sum, product) => sum + product.price);
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -96,7 +96,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                             fontSize: 16),
                       ),
                       Text(
-                        products.length.toString() + ' items',
+                        '${products.length} items | \$${totalPrice.toStringAsFixed(2)}', // Display item count and total price
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -136,7 +136,10 @@ class _CheckOutPageState extends State<CheckOutPage> {
                   child: Swiper(
                     itemCount: 2,
                     itemBuilder: (_, index) {
-                      return CreditCard();
+                      return Container(
+                        color: Colors.red, // Set the background color to red
+                        child: CreditCard(),
+                      );
                     },
                     scale: 0.8,
                     controller: swiperController,
@@ -147,54 +150,19 @@ class _CheckOutPageState extends State<CheckOutPage> {
                 ),
                 SizedBox(height: 24),
                 Center(
-                    child: Padding(
-                  padding: EdgeInsets.only(
-                      bottom: MediaQuery.of(context).padding.bottom == 0
-                          ? 20
-                          : MediaQuery.of(context).padding.bottom),
-                  child: checkOutButton,
-                ))
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).padding.bottom == 0
+                            ? 20
+                            : MediaQuery.of(context).padding.bottom),
+                    child: checkOutButton,
+                  ),
+                ),
               ],
             ),
           ),
         ),
       ),
     );
-  }
-}
-
-class Scroll extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    // TODO: implement paint
-
-    LinearGradient grT = LinearGradient(
-        colors: [Colors.transparent, Colors.black26],
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter);
-    LinearGradient grB = LinearGradient(
-        colors: [Colors.transparent, Colors.black26],
-        begin: Alignment.bottomCenter,
-        end: Alignment.topCenter);
-
-    canvas.drawRect(
-        Rect.fromLTRB(0, 0, size.width, 30),
-        Paint()
-          ..shader = grT.createShader(Rect.fromLTRB(0, 0, size.width, 30)));
-
-    canvas.drawRect(Rect.fromLTRB(0, 30, size.width, size.height - 40),
-        Paint()..color = Color.fromRGBO(50, 50, 50, 0.4));
-
-    canvas.drawRect(
-        Rect.fromLTRB(0, size.height - 40, size.width, size.height),
-        Paint()
-          ..shader = grB.createShader(
-              Rect.fromLTRB(0, size.height - 40, size.width, size.height)));
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    // TODO: implement shouldRepaint
-    return false;
   }
 }

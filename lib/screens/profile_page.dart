@@ -6,7 +6,14 @@ import 'package:task_shop/screens/tracking_page.dart';
 import 'package:task_shop/screens/wallet/wallet_page.dart';
 import 'package:flutter/material.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
+  @override
+  _ProfilePageState createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  bool isBlueBackground = false;
+
   void showPhoneNumberDialog(BuildContext context) {
     showDialog(
       context: context,
@@ -39,7 +46,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffF9F9F9),
+      backgroundColor: isBlueBackground ? Colors.blue : Colors.white,
       body: SafeArea(
         top: true,
         child: SingleChildScrollView(
@@ -48,6 +55,22 @@ class ProfilePage extends StatelessWidget {
                 EdgeInsets.only(left: 16.0, right: 16.0, top: kToolbarHeight),
             child: Column(
               children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Switch(
+                      value: isBlueBackground,
+                      onChanged: (value) {
+                        setState(() {
+                          isBlueBackground = value;
+                        });
+                      },
+                      activeColor: Colors.blue,
+                      inactiveTrackColor: Colors.grey[300],
+                      inactiveThumbColor: Colors.white,
+                    ),
+                  ],
+                ),
                 CircleAvatar(
                   maxRadius: 48,
                   backgroundImage: AssetImage('assets/avatar.jpg'),
@@ -151,7 +174,7 @@ class ProfilePage extends StatelessWidget {
                     width: 30,
                     height: 30,
                   ),
-                  trailing: Icon(Icons.chevron_right, color: black),
+                  trailing: Icon(Icons.chevron_right, color: Colors.black),
                   onTap: () => Navigator.of(context).push(
                       MaterialPageRoute(builder: (_) => SettingsPage())),
                 ),
@@ -162,7 +185,7 @@ class ProfilePage extends StatelessWidget {
                   leading: Image.asset('assets/icons/support.png'),
                   trailing: Icon(
                     Icons.chevron_right,
-                    color: black,
+                    color: Colors.black,
                   ),
                   onTap: () => showPhoneNumberDialog(context),
                 ),
@@ -171,7 +194,7 @@ class ProfilePage extends StatelessWidget {
                   title: Text('FAQ'),
                   subtitle: Text('Questions and Answer'),
                   leading: Image.asset('assets/icons/faq.png'),
-                  trailing: Icon(Icons.chevron_right, color: black),
+                  trailing: Icon(Icons.chevron_right, color: Colors.black),
                   onTap: () => Navigator.of(context).push(
                       MaterialPageRoute(builder: (_) => FaqPage())),
                 ),

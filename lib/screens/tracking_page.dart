@@ -28,7 +28,7 @@ class _TrackingPageState extends State<TrackingPage> {
     ),
   ];
 
-  String selectedProduct = 'Boat Headphones Bass boost 100v';
+  String selectedProduct = 'Rick Owens DRKSHDW Jumbo Lace Low';
 
   @override
   Widget build(BuildContext context) {
@@ -71,12 +71,12 @@ class _TrackingPageState extends State<TrackingPage> {
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton(
                         items: <String>[
-                          'Boat Headphones Bass boost 100v',
-                          'Boat Headphones Bass boost 200v',
-                          'Boat Headphones Bass boost 300v',
-                          'Boat Headphones Bass boost 400v',
-                          'Boat Headphones Bass boost 500v',
-                          'Boat Headphones Bass double boosting 600v'
+                          'Rick Owens DRKSHDW Jumbo Lace Low',
+                          'Miami Silver Exclusive(XL)',
+                          'Retro On-Field Atlanta Braves Home 59Fifty Fitted Hat',
+                          'AMIRI x Playboy Denim(30)',
+                          'BAPE Color Camo Shark Full Zip Hoodie',
+                          'Rick Owens DRKSHDW Jumbo Lace High'
                         ].map((val) {
                           return DropdownMenuItem<String>(
                             value: val,

@@ -61,13 +61,13 @@ class _RatingPageState extends State<RatingPage> {
                                 boxShadow: shadow,
                                 border: Border.all(
                                     width: 8.0, color: Colors.white)),
-                            child: Image.asset('assets/headphones.png'),
+                            child: Image.asset('assets/headphone_13.png'),
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 72.0, vertical: 16.0),
                             child: Text(
-                              'Boat Rockerz 350 On-Ear Bluetooth Headphones',
+                              'MSCHF Big Red Boot',
                               style: TextStyle(fontWeight: FontWeight.bold),
                               textAlign: TextAlign.center,
                             ),
